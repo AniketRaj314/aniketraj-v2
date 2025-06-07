@@ -1,103 +1,78 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      {/* Header */}
+      <header className="w-full flex items-center justify-between px-8 py-6 fixed top-0 left-0 z-50 bg-background/80 backdrop-blur border-muted">
+        <span className="font-heading text-xl tracking-widest">SPODER</span>
+        <nav className="flex gap-8 text-md font-body">
+          <a href="#about" className="hover:text-accent transition-colors">About</a>
+          <a href="#experience" className="hover:text-accent transition-colors">Experiences</a>
+          <a href="#blog" className="hover:text-accent transition-colors">Blog</a>
+        </nav>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+      <main className="min-h-screen flex flex-col items-center justify-center px-4 text-center pt-40 pb-24">
+        <Image
+          src="/aniket-raj-profile.png"
+          alt="Aniket Raj"
+          width={128}
+          height={128}
+          className="rounded-full mb-4 border border-muted"
+        />
+        <h1 className="text-4xl font-heading">ANIKET RAJ</h1>
+        <p className="text-lg font-body text-muted">Chief of Staff at Devfolio</p>
+        <p className="mt-6 font-body italic text-foreground">
+          &quot;With great power, comes great responsibility&quot;
+        </p>
+        <section id="about" className="mt-20 max-w-2xl mx-auto px-4 text-center">
+          <h2 className="text-2xl font-heading mb-4 tracking-widest">ABOUT ME</h2>
+          <p className="text-muted font-body leading-relaxed">
+            I&apos;m a tech-obsessed human who enjoys building scalable systems, supporting creative teams, and shipping things that matter. 
+            Currently driving operations and strategy at Devfolio, while tinkering with experiments on the side.
+          </p>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+      {/* Experience section further down */}
+      <section id="experience" className="mt-32 max-w-5xl mx-auto px-4 border-t border-muted pt-12">
+        <h2 className="text-2xl font-heading mb-10 tracking-widest text-center">EXPERIENCE</h2>
+        <div className="space-y-10 font-body text-muted text-sm sm:text-base">
+          <div>
+            <div className="grid grid-cols-3 text-foreground font-heading">
+              <span className="text-left">Devfolio</span>
+              <span className="text-center">Chief of Staff</span>
+              <span className="text-right">Dec &apos;20 – Present</span>
+            </div>
+            <p className="mt-1 text-left">Managed ops and ran India&apos;s biggest hackathons</p>
+          </div>
+          <div>
+            <div className="grid grid-cols-3 text-foreground font-heading">
+              <span className="text-left">bitgrit</span>
+              <span className="text-center">Full Stack Engineer / CA</span>
+              <span className="text-right">Jan &apos;20 – Jan &apos;21</span>
+            </div>
+            <p className="mt-1 text-left">Taught ML/DS/Blockchain, worked on Kubernetes infra</p>
+          </div>
+          <div>
+            <div className="grid grid-cols-3 text-foreground font-heading">
+              <span className="text-left">Apli.ai</span>
+              <span className="text-center">Frontend Engineer</span>
+              <span className="text-right">Feb &apos;20 – May &apos;20</span>
+            </div>
+            <p className="mt-1 text-left">Built and designed web/mobile experiences</p>
+          </div>
+          <div>
+            <div className="grid grid-cols-3 text-foreground font-heading">
+              <span className="text-left">Bank of India</span>
+              <span className="text-center">Data Analyst</span>
+              <span className="text-right">Jun &apos;19 – Jul &apos;19</span>
+            </div>
+            <p className="mt-1 text-left">Created NPA risk prediction software</p>
+          </div>
+        </div>
+      </section>
+    </>
+  )
 }
