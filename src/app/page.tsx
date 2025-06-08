@@ -22,7 +22,7 @@ export default function Home() {
           className="rounded-full mb-4 border border-muted"
         />
         <h1 className="text-4xl font-heading">ANIKET RAJ</h1>
-        <p className="text-lg font-body text-muted">Chief of Staff at Devfolio</p>
+        <p className="text-lg font-body text-muted">Community Lead, Devfolio</p>
         <p className="mt-6 font-body italic text-foreground">
           &quot;With great power, comes great responsibility&quot;
         </p>
@@ -73,6 +73,36 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section id="beyond-work" className="mt-24 max-w-5xl mx-auto px-4 border-t border-muted pt-12">
+        <h2 className="text-2xl font-heading mb-10 tracking-widest text-center">BEYOND WORK</h2>
+
+        <div className="flex flex-wrap justify-center gap-24 text-muted text-sm sm:text-base">
+          {/* Gaming */}
+          <div className="flex flex-col items-center space-y-2">
+            <Image src="/icons/joystick.svg" alt="Gaming" width={64} height={64} />
+            <span className="font-body">Gaming</span>
+          </div>
+
+          {/* Vibe Coding */}
+          <div className="flex flex-col items-center space-y-2">
+            <Image src="/icons/vibecoding.svg" alt="Vibe Coding" width={64} height={64} />
+            <span className="font-body">Vibe Coding</span>
+          </div>
+
+          {/* Comic Books */}
+          <div className="flex flex-col items-center space-y-2">
+            <Image src="/icons/superhero.svg" alt="Comic Books" width={64} height={64} />
+            <span className="font-body">Comic Books</span>
+          </div>
+
+          {/* eSports */}
+          <div className="flex flex-col items-center space-y-2">
+            <Image src="/icons/trophy.svg" alt="eSports" width={64} height={64} />
+            <span className="font-body">eSports</span>
+          </div>
+        </div>
+      </section>
+
     </>
   )
 }
