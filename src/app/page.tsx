@@ -194,52 +194,60 @@ export default function Home() {
         <div className="flex flex-wrap justify-center gap-12 text-muted text-sm sm:text-base">
           {/* Telegram */}
           <a
-            href="https://t.me/spodernet"
+            href="https://t.me/AniketRaj314"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center space-y-2 hover:text-foreground transition"
+            className="flex flex-col items-center justify-center space-y-2 hover:text-foreground transition"
           >
-            <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-              <path d="M9.947 13.447l-.396 4.412c.568 0 .815-.243 1.117-.535l2.671-2.537 5.541 4.046c1.017.56 1.744.265 2.013-.944l3.648-17.07c.345-1.594-.575-2.215-1.604-1.84L.843 9.85c-1.557.604-1.535 1.468-.268 1.857l5.885 1.837L19.358 4.93c.546-.338 1.042-.151.633.216l-10.044 8.3z" />
-            </svg>
-            <span>Telegram</span>
+            <Image
+              src="/icons/telegram.svg"
+              alt="Telegram"
+              width={24}
+              height={24}
+              className="invert"
+            />
           </a>
 
           {/* Instagram */}
           <a
-            href="https://instagram.com/spidey_codes"
+            href="https://instagram.com/aniketraj.eth"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center space-y-2 hover:text-foreground transition"
+            className="flex flex-col items-center justify-center space-y-2 hover:text-foreground transition"
           >
-            <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.97.24 2.428.415a4.92 4.92 0 011.71 1.12 4.92 4.92 0 011.12 1.71c.175.457.36 1.257.415 2.427.058 1.267.07 1.647.07 4.851s-.012 3.584-.07 4.851c-.056 1.17-.24 1.97-.415 2.428a4.92 4.92 0 01-1.12 1.71 4.92 4.92 0 01-1.71 1.12c-.457.175-1.257.36-2.427.415-1.267.058-1.647.07-4.851.07s-3.584-.012-4.851-.07c-1.17-.056-1.97-.24-2.428-.415a4.92 4.92 0 01-1.71-1.12 4.92 4.92 0 01-1.12-1.71c-.175-.457-.36-1.257-.415-2.427C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.851c.056-1.17.24-1.97.415-2.428a4.92 4.92 0 011.12-1.71 4.92 4.92 0 011.71-1.12c.457-.175 1.257-.36 2.427-.415C8.416 2.175 8.796 2.163 12 2.163zm0 1.838c-3.178 0-3.562.012-4.818.07-1.012.049-1.556.215-1.92.36a3.12 3.12 0 00-1.13.73 3.12 3.12 0 00-.73 1.13c-.145.364-.31.908-.36 1.92-.058 1.256-.07 1.64-.07 4.818s.012 3.562.07 4.818c.049 1.012.215 1.556.36 1.92.176.48.427.893.73 1.13.237.303.65.554 1.13.73.364.145.908.31 1.92.36 1.256.058 1.64.07 4.818.07s3.562-.012 4.818-.07c1.012-.049 1.556-.215 1.92-.36a3.12 3.12 0 001.13-.73 3.12 3.12 0 00.73-1.13c.145-.364.31-.908.36-1.92.058-1.256.07-1.64.07-4.818s-.012-3.562-.07-4.818c-.049-1.012-.215-1.556-.36-1.92a3.12 3.12 0 00-.73-1.13 3.12 3.12 0 00-1.13-.73c-.364-.145-.908-.31-1.92-.36-1.256-.058-1.64-.07-4.818-.07zm0 3.838a5.999 5.999 0 100 12 5.999 5.999 0 000-12zm0 9.838a3.84 3.84 0 110-7.68 3.84 3.84 0 010 7.68zm6.406-10.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z" />
-            </svg>
-            <span>Instagram</span>
+            <Image
+              src="/icons/instagram.svg"
+              alt="Instagram"
+              width={24}
+              height={24}
+              className="invert"
+            />
           </a>
 
-          {/* Email */}
+          {/* X */}
           <a
-            href="mailto:hi@aniketraj.me"
-            className="flex flex-col items-center space-y-2 hover:text-foreground transition"
+            href="https://x.com/aniketraj314"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center justify-center space-y-2 hover:text-foreground transition"
           >
-            <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-              <path d="M12 13.5L1 6.75V18h22V6.75L12 13.5zM12 12L1 5h22L12 12z" />
-            </svg>
-            <span>Email</span>
+            <Image src="/icons/x.svg" alt="X" width={24} height={24} />
           </a>
 
           {/* Devfolio */}
           <a
-            href="https://devfolio.co/@aniketraj"
+            href="https://devfolio.co/@aniket_raj"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center space-y-2 hover:text-foreground transition"
+            className="flex flex-col items-center justify-center space-y-2 hover:text-foreground transition"
           >
-            <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-              <path d="M4 4h16v16H4z" />
-            </svg>
-            <span>Devfolio</span>
+            <Image
+              src="/icons/devfolio.svg"
+              alt="Devfolio"
+              width={24}
+              height={24}
+              className="filter-white"
+            />
           </a>
 
           {/* LinkedIn */}
@@ -247,12 +255,25 @@ export default function Home() {
             href="https://linkedin.com/in/aniketraj314"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center space-y-2 hover:text-foreground transition"
+            className="flex flex-col items-center justify-center space-y-2 hover:text-foreground transition"
           >
-            <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-              <path d="M4.98 3.5C3.88 3.5 3 4.38 3 5.48c0 1.09.88 1.97 1.98 1.97h.02C6.09 7.45 7 6.57 7 5.48c0-1.1-.9-1.98-2.02-1.98zM3 8.75h4v12.25H3V8.75zM9.75 8.75h3.64v1.68h.05c.51-.96 1.76-1.98 3.63-1.98 3.88 0 4.6 2.55 4.6 5.87v6.68h-4v-5.91c0-1.41-.02-3.24-1.97-3.24-1.98 0-2.28 1.54-2.28 3.13v6.02h-4V8.75z" />
-            </svg>
-            <span>LinkedIn</span>
+            <Image
+              src="/icons/linkedin.svg"
+              alt="LinkedIn"
+              width={24}
+              height={24}
+              className="invert"
+            />
+          </a>
+
+          {/* Email */}
+          <a
+            href="mailto:hi@aniketraj.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center justify-center space-y-2 hover:text-foreground transition"
+          >
+            <Image src="/icons/email.svg" alt="Email" width={30} height={30} />
           </a>
         </div>
       </section>
