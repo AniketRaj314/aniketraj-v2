@@ -29,11 +29,11 @@ export default function Home() {
           className="rounded-full mb-4 border border-muted"
         />
         <h1 className="text-4xl font-heading">ANIKET RAJ</h1>
-        <p className="text-lg font-body text-muted">Chief of Staff, Devfolio</p>
+        <p className="text-lg font-body text-muted">Community Lead, Devfolio</p>
         <section id="about" className="mt-20 max-w-2xl mx-auto px-4">
           <h2 className="text-2xl font-heading mb-4 tracking-widest text-center">ABOUT ME</h2>
           <p className="text-muted font-body leading-relaxed text-left">
-            Chief of Staff at{' '}
+            Community Lead at{' '}
             <a
               href="https://devfolio.co"
               target="_blank"
@@ -60,7 +60,7 @@ export default function Home() {
           <div>
             <div className="grid grid-cols-3 text-foreground font-heading">
               <span className="text-left">Devfolio</span>
-              <span className="text-center">Chief of Staff</span>
+              <span className="text-center">Community Lead</span>
               <span className="text-right">Dec &apos;20 – Present</span>
             </div>
             <p className="mt-1 text-left">Managed ops and ran India&apos;s biggest hackathons</p>
@@ -137,7 +137,7 @@ export default function Home() {
                 and made sure every student touched tech at least once.
               </p>
               <a
-                href="https://thescriptgroup.in"
+                href="https://thescriptgroup.xyz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 text-foreground hover:underline"
@@ -156,7 +156,7 @@ export default function Home() {
                 straight to prove consistency &gt; motivation.
               </p>
               <a
-                href="https://instagram.com/spidey_codes"
+                href="https://instagram.com/spider31415"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 text-foreground hover:underline"
