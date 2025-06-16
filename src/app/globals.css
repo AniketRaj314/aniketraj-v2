@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Ndot55';
-  src: url('/fonts/Ndot55.otf') format('truetype');
+  src: url('/fonts/Ndot55.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
