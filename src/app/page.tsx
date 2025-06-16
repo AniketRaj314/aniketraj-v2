@@ -97,7 +97,7 @@ export default function Home() {
       >
         <h2 className="text-2xl font-heading mb-10 tracking-widest text-center">BEYOND WORK</h2>
 
-        <div className="flex flex-wrap justify-center gap-24 text-muted text-sm sm:text-base">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 sm:gap-x-10 gap-y-10 text-muted text-sm sm:text-base">
           {/* Gaming */}
           <div className="flex flex-col items-center space-y-2">
             <Image src="/icons/joystick.svg" alt="Gaming" width={64} height={64} />
@@ -304,6 +304,7 @@ export default function Home() {
           >
             Nothing Design System
           </a>
+          .
         </div>
       </footer>
     </>
