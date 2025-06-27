@@ -6,16 +6,27 @@ export default function Home() {
     <>
       {/* Header */}
       <header className="w-full flex items-center justify-between px-8 py-6 fixed top-0 left-0 z-50 bg-background/80 backdrop-blur border-muted">
-        <span className="font-heading text-xl tracking-widest">SPODER</span>
+        <a
+          href="#"
+          className="font-heading text-xl tracking-widest hover:text-accent transition-colors"
+        >
+          SPODER
+        </a>
         <nav className="flex gap-8 text-md font-body">
           <a href="#about" className="hover:text-accent transition-colors">
             About
           </a>
           <a href="#experience" className="hover:text-accent transition-colors">
-            Experiences
+            Experience
           </a>
-          <a href="#blog" className="hover:text-accent transition-colors">
-            Blog
+          <a href="#beyond-work" className="hover:text-accent transition-colors">
+            Beyond Work
+          </a>
+          <a href="#projects" className="hover:text-accent transition-colors">
+            Projects
+          </a>
+          <a href="#socials" className="hover:text-accent transition-colors">
+            Socials
           </a>
         </nav>
       </header>
@@ -30,7 +41,7 @@ export default function Home() {
         />
         <h1 className="text-4xl font-heading">ANIKET RAJ</h1>
         <p className="text-lg font-body text-muted">Chief of Staff, Devfolio</p>
-        <section id="about" className="mt-20 max-w-2xl mx-auto px-4">
+        <section id="about" className="mt-20 max-w-2xl mx-auto px-4 scroll-mt-24">
           <h2 className="text-2xl font-heading mb-4 tracking-widest text-center">ABOUT ME</h2>
           <p className="text-muted font-body leading-relaxed text-left">
             Chief of Staff at{' '}
@@ -54,7 +65,10 @@ export default function Home() {
       </main>
 
       {/* Experience section further down */}
-      <section id="experience" className="mt-32 max-w-5xl mx-auto px-4 border-t border-muted pt-12">
+      <section
+        id="experience"
+        className="mt-32 max-w-5xl mx-auto px-4 border-t border-muted pt-12 scroll-mt-24"
+      >
         <h2 className="text-2xl font-heading mb-10 tracking-widest text-center">EXPERIENCE</h2>
         <div className="space-y-10 font-body text-muted text-sm sm:text-base">
           <div>
@@ -93,7 +107,7 @@ export default function Home() {
       </section>
       <section
         id="beyond-work"
-        className="mt-24 max-w-5xl mx-auto px-4 border-t border-muted pt-12"
+        className="mt-24 max-w-5xl mx-auto px-4 border-t border-muted pt-12 scroll-mt-24"
       >
         <h2 className="text-2xl font-heading mb-10 tracking-widest text-center">BEYOND WORK</h2>
 
@@ -124,7 +138,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="mt-24 max-w-5xl mx-auto px-4 border-t border-muted pt-12">
+      <section
+        id="projects"
+        className="mt-24 max-w-5xl mx-auto px-4 border-t border-muted pt-12 scroll-mt-24"
+      >
         <h2 className="text-2xl font-heading mb-10 tracking-widest text-center">PROJECTS</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 justify-center gap-x-16 gap-y-10 font-body text-muted text-sm sm:text-base">
@@ -133,7 +150,7 @@ export default function Home() {
             <div className="flex flex-col gap-2">
               <h3 className="font-heading text-lg text-foreground">The SCRIPT Group</h3>
               <p>
-                Headed one of MIT-WPU’s most active tech communities. We ran events, shipped tools,
+                Headed one of MIT-WPU's most active tech communities. We ran events, shipped tools,
                 and made sure every student touched tech at least once.
               </p>
               <a
@@ -188,7 +205,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="socials" className="mt-24 max-w-5xl mx-auto px-4 border-t border-muted pt-12">
+      <section
+        id="socials"
+        className="mt-24 max-w-5xl mx-auto px-4 border-t border-muted pt-12 scroll-mt-24"
+      >
         <h2 className="text-2xl font-heading mb-10 tracking-widest text-center">SOCIALS</h2>
 
         <div className="flex flex-wrap justify-center gap-12 text-muted text-sm sm:text-base">
@@ -285,9 +305,6 @@ export default function Home() {
           <div className="space-x-6">
             <a href="#" className="hover:text-foreground transition">
               Home
-            </a>
-            <a href="#projects" className="hover:text-foreground transition">
-              Projects
             </a>
             <a href="mailto:hi@aniketraj.me" className="hover:text-foreground transition">
               Contact
