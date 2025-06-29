@@ -12,7 +12,7 @@ export default function Home() {
         >
           SPODER
         </a>
-        <nav className="flex gap-8 text-md font-body">
+        <nav className="hidden sm:flex gap-8 text-md font-body">
           <a href="#about" className="hover:text-accent transition-colors">
             About
           </a>
