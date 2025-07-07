@@ -12,7 +12,7 @@ export default function BraindumpPage() {
       {posts.map((post) => (
         <Link key={post.slug} href={`/braindump/${post.slug}`}>
           <div className="border border-neutral-700 rounded-2xl p-6 hover:bg-neutral-900 transition-colors cursor-pointer space-y-2">
-            <h2 className="font-heading text-xl">{post.title}</h2>
+            <h2 className="font-heading text-xl">{post.title.toUpperCase()}</h2>
             <p className="text-sm text-neutral-400">
               {new Date(post.date).toLocaleDateString('en-IN', {
                 day: 'numeric',
