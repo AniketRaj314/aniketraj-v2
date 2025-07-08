@@ -1,35 +1,11 @@
 import Image from 'next/image'
+import Navbar from '../components/Navbar'
 
 export default function Home() {
   const year = new Date().getFullYear()
   return (
     <>
-      {/* Header */}
-      <header className="w-full flex items-center justify-between px-8 py-6 fixed top-0 left-0 z-50 bg-background/80 backdrop-blur border-muted">
-        <a
-          href="#"
-          className="font-heading text-xl tracking-widest hover:text-accent transition-colors"
-        >
-          SPODER
-        </a>
-        <nav className="hidden sm:flex gap-8 text-md font-body">
-          <a href="#about" className="hover:text-accent transition-colors">
-            About
-          </a>
-          <a href="#experience" className="hover:text-accent transition-colors">
-            Experience
-          </a>
-          <a href="#beyond-work" className="hover:text-accent transition-colors">
-            Beyond Work
-          </a>
-          <a href="#projects" className="hover:text-accent transition-colors">
-            Projects
-          </a>
-          <a href="#socials" className="hover:text-accent transition-colors">
-            Socials
-          </a>
-        </nav>
-      </header>
+      <Navbar showNavLinks={true} />
 
       <main className="min-h-screen flex flex-col items-center justify-center px-4 text-center pt-40 pb-24">
         <Image
