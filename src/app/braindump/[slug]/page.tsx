@@ -5,11 +5,12 @@ import Link from 'next/link'
 import MDXRenderer from '../../../components/MDXRenderer'
 
 interface Props {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
-export default function PostPage({ params }: Props) {
-  const post = getPostBySlug(params.slug)
+export default async function PostPage({ params }: Props) {
+  const { slug } = await params
+  const post = getPostBySlug(slug)
   if (!post) return notFound()
 
   return (
