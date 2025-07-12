@@ -21,14 +21,11 @@ export default function Navbar({
       </Link>
       {showNavLinks && (
         <nav className="hidden sm:flex gap-8 text-md font-body">
-          <a href="#about" className="hover:text-accent transition-colors">
-            About
+          <a href="/braindump" className="hover:text-accent transition-colors">
+            Braindump
           </a>
           <a href="#experience" className="hover:text-accent transition-colors">
             Experience
-          </a>
-          <a href="#beyond-work" className="hover:text-accent transition-colors">
-            Beyond Work
           </a>
           <a href="#projects" className="hover:text-accent transition-colors">
             Projects

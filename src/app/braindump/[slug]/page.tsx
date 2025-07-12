@@ -18,7 +18,7 @@ export default async function PostPage({ params }: Props) {
       <Link href="/braindump" className="text-sm text-neutral-500 hover:underline">
         ← back to all posts
       </Link>
-      <h1 className="font-heading text-3xl md:text-5xl">{post.title}</h1>
+      <h1 className="font-heading text-3xl md:text-5xl">{post.title.toUpperCase()}</h1>
       <p className="text-sm text-neutral-400">
         {new Date(post.date).toLocaleDateString('en-GB', {
           day: 'numeric',

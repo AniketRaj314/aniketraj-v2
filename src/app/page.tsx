@@ -126,8 +126,8 @@ export default function Home() {
             <div className="flex flex-col gap-2">
               <h3 className="font-heading text-lg text-foreground">The SCRIPT Group</h3>
               <p>
-                Headed one of MIT-WPU's most active tech communities. We ran events, shipped tools,
-                and made sure every student touched tech at least once.
+                Headed one of MIT-WPU&apos;s most active tech communities. We ran events, shipped
+                tools, and made sure every student touched tech at least once.
               </p>
               <a
                 href="https://thescriptgroup.xyz"
