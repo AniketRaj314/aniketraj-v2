@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props) {
     openGraph: {
       title: post.title,
       description: post.description || post.title,
-      images: post.image ? [post.image] : [],
+      images: post.image ? [post.image] : '/aniket-raj-profile.png',
     },
   }
 }
@@ -47,13 +47,13 @@ export default async function PostPage({ params }: Props) {
         })}
       </p>
       {post.image && (
-        <div className="my-6">
+        <div className="my-6 flex justify-center">
           <Image
             src={post.image}
             alt=""
-            width={800}
-            height={400}
-            className="rounded-2xl w-full object-cover border border-neutral-800"
+            width={500}
+            height={300}
+            className="rounded-2xl max-w-[90vw] max-h-[350px] object-cover border border-neutral-800"
           />
         </div>
       )}
