@@ -8,6 +8,26 @@ interface Props {
   params: Promise<{ slug: string }>
 }
 
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params
+  const post = getPostBySlug(slug)
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+      description: 'No post found for this slug.',
+    }
+  }
+  return {
+    title: post.title,
+    description: post.description || post.title,
+    openGraph: {
+      title: post.title,
+      description: post.description || post.title,
+      images: post.image ? [post.image] : [],
+    },
+  }
+}
+
 export default async function PostPage({ params }: Props) {
   const { slug } = await params
   const post = getPostBySlug(slug)
