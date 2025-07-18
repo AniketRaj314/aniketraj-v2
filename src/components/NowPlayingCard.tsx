@@ -3,7 +3,8 @@
 import { useEffect, useState, useRef } from 'react'
 
 interface CurrentlyPlaying {
-  item: {
+  isPlaying?: boolean
+  item?: {
     name: string
     artists: Array<{ name: string }>
     album: {
@@ -63,10 +64,10 @@ export default function NowPlayingCard() {
     )
   }
 
-  if (!currentlyPlaying) {
+  if (!currentlyPlaying || currentlyPlaying.isPlaying === false || !currentlyPlaying.item) {
     return (
       <div className="bg-neutral-900 rounded-2xl shadow-lg overflow-hidden p-4 w-60 h-60 flex items-center justify-center">
-        <p className="text-white text-lg">Nothing is playing right now 🎧</p>
+        <p className="text-white text-lg italic">Taking five until the next beat...</p>
       </div>
     )
   }
