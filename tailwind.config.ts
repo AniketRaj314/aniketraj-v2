@@ -19,6 +19,16 @@ const config: Config = {
       colors: {
         accent: '#ff3f81',
       },
+      animation: {
+        marquee: 'marquee 10s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '20%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-150%)' },
+        },
+      },
     },
   },
   plugins: [typography],

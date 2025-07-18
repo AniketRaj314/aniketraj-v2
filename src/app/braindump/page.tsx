@@ -7,7 +7,7 @@ export default function BraindumpPage() {
 
   return (
     <>
-      <Navbar showNavLinks={false} />
+      <Navbar />
       <div className="max-w-3xl mx-auto px-6 py-10 space-y-10 pt-32">
         <h1 className="font-heading text-3xl md:text-5xl mb-8">BRAINDUMP</h1>
         <div className="space-y-2">

@@ -5,7 +5,7 @@ export default function Home() {
   const year = new Date().getFullYear()
   return (
     <>
-      <Navbar showNavLinks={true} />
+      <Navbar />
 
       <main className="min-h-screen flex flex-col items-center justify-center px-4 text-center pt-40 pb-24">
         <Image
