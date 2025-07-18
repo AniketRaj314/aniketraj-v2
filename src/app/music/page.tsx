@@ -1,13 +1,17 @@
-import { getTopTracks } from '../../../lib/spotify'
+'use client'
+
+import { useState } from 'react'
 import NowPlayingCard from '../../components/NowPlayingCard'
 import TopArtists from '../../components/TopArtists'
+import TopTracks from '../../components/TopTracks'
 import RecentlyPlayed from '../../components/RecentlyPlayed'
+import Modal from '../../components/Modal'
 import Navbar from '../../components/Navbar'
 
 export const dynamic = 'force-dynamic'
 
-export default async function MusicPage() {
-  const [topTracks] = await Promise.all([getTopTracks()])
+export default function MusicPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <>
@@ -20,31 +24,31 @@ export default async function MusicPage() {
             <NowPlayingCard />
           </div>
           <div className="lg:col-span-2">
-            <h2 className="text-2xl font-heading mb-4">LAST 5 TRACKS</h2>
-            <RecentlyPlayed />
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-heading">LAST 5 TRACKS</h2>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="text-neutral-400 hover:text-white transition-colors p-2 hover:bg-neutral-800 rounded-md"
+                title="View more tracks"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                  />
+                </svg>
+              </button>
+            </div>
+            <RecentlyPlayed tracksToShow={5} />
           </div>
         </section>
 
         {/* Top Tracks */}
         <section>
           <h2 className="text-2xl font-heading mb-4">TOP TRACKS</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {topTracks.items.map((track: any) => (
-              <div key={track.id} className="space-y-2">
-                <img
-                  src={track.album.images[0].url}
-                  alt={track.name}
-                  className="w-full h-auto rounded-md"
-                />
-                <div>
-                  <p className="font-medium">{track.name}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {track.artists.map((a: any) => a.name).join(', ')}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <TopTracks />
         </section>
 
         {/* Top Artists */}
@@ -53,6 +57,15 @@ export default async function MusicPage() {
           <TopArtists />
         </section>
       </div>
+
+      {/* Modal for expanded recently played tracks */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="RECENTLY PLAYED TRACKS"
+      >
+        <RecentlyPlayed tracksToShow={10} />
+      </Modal>
     </>
   )
 }

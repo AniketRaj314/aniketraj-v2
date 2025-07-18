@@ -18,7 +18,11 @@ interface RecentlyPlayedTrack {
   played_at: string
 }
 
-export default function RecentlyPlayed() {
+interface RecentlyPlayedProps {
+  tracksToShow?: number
+}
+
+export default function RecentlyPlayed({ tracksToShow = 5 }: RecentlyPlayedProps) {
   const [recentlyPlayed, setRecentlyPlayed] = useState<RecentlyPlayedTrack[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -42,7 +46,7 @@ export default function RecentlyPlayed() {
     return (
       <div className="space-y-4">
         <div className="space-y-3">
-          {[...Array(5)].map((_, i) => (
+          {[...Array(tracksToShow)].map((_, i) => (
             <div key={i} className="flex items-center space-x-3 animate-pulse">
               <div className="w-12 h-12 bg-neutral-800 rounded-md"></div>
               <div className="flex-1 space-y-1">
@@ -59,7 +63,7 @@ export default function RecentlyPlayed() {
   return (
     <div className="space-y-4">
       <div className="space-y-3">
-        {recentlyPlayed.slice(0, 5).map((item, index) => (
+        {recentlyPlayed.slice(0, tracksToShow).map((item, index) => (
           <a
             key={`${item.track.id}-${index}`}
             href={item.track.external_urls.spotify}
