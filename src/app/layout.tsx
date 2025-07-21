@@ -1,6 +1,7 @@
 import './globals.css'
 import { Space_Grotesk } from 'next/font/google'
 import Script from 'next/script'
+import Footer from '../components/Footer'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -42,7 +43,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           gtag('config', 'G-NY2R9N80RR');
         `}
       </Script>
-      <body className="font-body">{children}</body>
+      <body className="font-body flex flex-col min-h-screen">
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   )
 }

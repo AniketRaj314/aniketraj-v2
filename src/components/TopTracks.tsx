@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import MediaItem from './MediaItem'
 
 interface TopTrack {
   id: string
@@ -15,7 +16,11 @@ interface TopTrack {
   }
 }
 
-export default function TopTracks() {
+interface TopTracksProps {
+  tracksToShow?: number
+}
+
+export default function TopTracks({ tracksToShow = 5 }: TopTracksProps) {
   const [topTracks, setTopTracks] = useState<TopTrack[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -37,45 +42,36 @@ export default function TopTracks() {
 
   if (loading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {[...Array(6)].map((_, i) => (
-          <div key={i} className="space-y-2 animate-pulse">
-            <div className="w-full h-48 bg-neutral-800 rounded-md"></div>
-            <div className="space-y-1">
-              <div className="h-4 bg-neutral-800 rounded w-3/4"></div>
-              <div className="h-3 bg-neutral-800 rounded w-1/2"></div>
+      <div className="space-y-4">
+        <div className="space-y-3">
+          {[...Array(tracksToShow)].map((_, i) => (
+            <div key={i} className="flex items-center space-x-3 animate-pulse">
+              <div className="w-12 h-12 bg-neutral-800 rounded-md"></div>
+              <div className="flex-1 space-y-1">
+                <div className="h-4 bg-neutral-800 rounded w-3/4"></div>
+                <div className="h-3 bg-neutral-800 rounded w-1/2"></div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      {topTracks.map((track) => (
-        <a
-          key={track.id}
-          href={track.external_urls.spotify}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group space-y-2 transition-transform hover:scale-105"
-        >
-          <img
-            src={track.album.images[0]?.url}
-            alt={track.name}
-            className="w-full h-auto rounded-md object-cover"
+    <div className="space-y-4">
+      <div className="space-y-3">
+        {topTracks.slice(0, tracksToShow).map((track) => (
+          <MediaItem
+            key={track.id}
+            image={track.album.images[0]?.url}
+            title={track.name}
+            subtext={track.artists.map((artist) => artist.name).join(', ')}
+            href={track.external_urls.spotify}
+            imageShape="square"
           />
-          <div>
-            <p className="font-medium text-white group-hover:text-green-400 transition-colors truncate">
-              {track.name}
-            </p>
-            <p className="text-sm text-muted-foreground truncate">
-              {track.artists.map((artist) => artist.name).join(', ')}
-            </p>
-          </div>
-        </a>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }

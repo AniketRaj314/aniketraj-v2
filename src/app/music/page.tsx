@@ -7,16 +7,29 @@ import TopTracks from '../../components/TopTracks'
 import RecentlyPlayed from '../../components/RecentlyPlayed'
 import Modal from '../../components/Modal'
 import Navbar from '../../components/Navbar'
+import ExpandIcon from '../../components/ExpandIcon'
 
 export const dynamic = 'force-dynamic'
 
 export default function MusicPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isRecentlyPlayedModalOpen, setIsRecentlyPlayedModalOpen] = useState(false)
+  const [isTopTracksModalOpen, setIsTopTracksModalOpen] = useState(false)
+  const [isTopArtistsModalOpen, setIsTopArtistsModalOpen] = useState(false)
 
   return (
     <>
       <Navbar />
       <div className="max-w-4xl mx-auto px-6 py-10 space-y-12 mt-20">
+        <h1 className="font-heading text-3xl md:text-5xl mb-8">MUSIC</h1>
+        <p className="text-neutral-400">
+          If you're gonna ask me about my music taste, might as well see the receipts. <br />
+          This page pulls live data from my Spotify; what I'm playing now, what I just heard, and
+          who's on repeat.
+          <br />
+          <br />
+          No lies, no curated playlists. Just raw, unfiltered vibes.
+        </p>
+        <hr />
         {/* Now Playing and Last 5 Tracks */}
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-1">
@@ -27,44 +40,74 @@ export default function MusicPage() {
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl font-heading">LAST 5 TRACKS</h2>
               <button
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => setIsRecentlyPlayedModalOpen(true)}
                 className="text-neutral-400 hover:text-white transition-colors p-2 hover:bg-neutral-800 rounded-md"
                 title="View more tracks"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
-                  />
-                </svg>
+                <ExpandIcon title="View more tracks" />
               </button>
             </div>
             <RecentlyPlayed tracksToShow={5} />
           </div>
         </section>
+        <hr />
+        {/* Top Tracks and Top Artists Side by Side */}
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-heading">TOP TRACKS</h2>
+              <button
+                onClick={() => setIsTopTracksModalOpen(true)}
+                className="text-neutral-400 hover:text-white transition-colors p-2 hover:bg-neutral-800 rounded-md"
+                title="View more tracks"
+              >
+                <ExpandIcon title="View more tracks" />
+              </button>
+            </div>
+            <TopTracks tracksToShow={5} />
+          </div>
 
-        {/* Top Tracks */}
-        <section>
-          <h2 className="text-2xl font-heading mb-4">TOP TRACKS</h2>
-          <TopTracks />
-        </section>
-
-        {/* Top Artists */}
-        <section>
-          <h2 className="text-2xl font-heading mb-4">TOP ARTISTS</h2>
-          <TopArtists />
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-heading">TOP ARTISTS</h2>
+              <button
+                onClick={() => setIsTopArtistsModalOpen(true)}
+                className="text-neutral-400 hover:text-white transition-colors p-2 hover:bg-neutral-800 rounded-md"
+                title="View more artists"
+              >
+                <ExpandIcon title="View more artists" />
+              </button>
+            </div>
+            <TopArtists artistsToShow={5} />
+          </div>
         </section>
       </div>
 
       {/* Modal for expanded recently played tracks */}
       <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        isOpen={isRecentlyPlayedModalOpen}
+        onClose={() => setIsRecentlyPlayedModalOpen(false)}
         title="RECENTLY PLAYED TRACKS"
       >
         <RecentlyPlayed tracksToShow={10} />
+      </Modal>
+
+      {/* Modal for expanded top tracks */}
+      <Modal
+        isOpen={isTopTracksModalOpen}
+        onClose={() => setIsTopTracksModalOpen(false)}
+        title="TOP TRACKS"
+      >
+        <TopTracks tracksToShow={10} />
+      </Modal>
+
+      {/* Modal for expanded top artists */}
+      <Modal
+        isOpen={isTopArtistsModalOpen}
+        onClose={() => setIsTopArtistsModalOpen(false)}
+        title="TOP ARTISTS"
+      >
+        <TopArtists artistsToShow={10} />
       </Modal>
     </>
   )

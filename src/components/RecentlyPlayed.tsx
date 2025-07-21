@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import MediaItem from './MediaItem'
 
 interface RecentlyPlayedTrack {
   track: {
@@ -64,25 +65,14 @@ export default function RecentlyPlayed({ tracksToShow = 5 }: RecentlyPlayedProps
     <div className="space-y-4">
       <div className="space-y-3">
         {recentlyPlayed.slice(0, tracksToShow).map((item, index) => (
-          <a
+          <MediaItem
             key={`${item.track.id}-${index}`}
+            image={item.track.album.images[0]?.url}
+            title={item.track.name}
+            subtext={item.track.artists.map((artist) => artist.name).join(', ')}
             href={item.track.external_urls.spotify}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center space-x-3 p-3 bg-neutral-900/50 rounded-lg hover:bg-neutral-800/50 transition-colors cursor-pointer"
-          >
-            <img
-              src={item.track.album.images[0]?.url}
-              alt={item.track.name}
-              className="w-12 h-12 rounded-md object-cover"
-            />
-            <div className="flex-1 min-w-0">
-              <h3 className="text-white font-medium truncate">{item.track.name}</h3>
-              <p className="text-sm text-muted-foreground truncate">
-                {item.track.artists.map((artist) => artist.name).join(', ')}
-              </p>
-            </div>
-          </a>
+            imageShape="square"
+          />
         ))}
       </div>
     </div>

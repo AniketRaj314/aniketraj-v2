@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import MediaItem from './MediaItem'
 
 interface Artist {
   id: string
@@ -14,7 +15,11 @@ interface Artist {
   }
 }
 
-export default function TopArtists() {
+interface TopArtistsProps {
+  artistsToShow?: number
+}
+
+export default function TopArtists({ artistsToShow = 5 }: TopArtistsProps) {
   const [topArtists, setTopArtists] = useState<Artist[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -38,7 +43,7 @@ export default function TopArtists() {
     return (
       <div className="space-y-4">
         <div className="space-y-3">
-          {[...Array(5)].map((_, i) => (
+          {[...Array(artistsToShow)].map((_, i) => (
             <div key={i} className="flex items-center space-x-3 animate-pulse">
               <div className="w-12 h-12 bg-neutral-800 rounded-full"></div>
               <div className="flex-1 space-y-1">
@@ -55,28 +60,17 @@ export default function TopArtists() {
   return (
     <div className="space-y-4">
       <div className="space-y-3">
-        {topArtists.slice(0, 5).map((artist) => (
-          <a
+        {topArtists.slice(0, artistsToShow).map((artist) => (
+          <MediaItem
             key={artist.id}
+            image={artist.images[0]?.url}
+            title={artist.name}
+            subtext={
+              artist.followers ? `${artist.followers.total.toLocaleString()} followers` : 'Artist'
+            }
             href={artist.external_urls.spotify}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center space-x-3 p-3 bg-neutral-900/50 rounded-lg hover:bg-neutral-800/50 transition-colors cursor-pointer"
-          >
-            <img
-              src={artist.images[0]?.url}
-              alt={artist.name}
-              className="w-12 h-12 rounded-full object-cover"
-            />
-            <div className="flex-1 min-w-0">
-              <h3 className="text-white font-medium truncate">{artist.name}</h3>
-              <p className="text-sm text-muted-foreground truncate">
-                {artist.followers
-                  ? `${artist.followers.total.toLocaleString()} followers`
-                  : 'Artist'}
-              </p>
-            </div>
-          </a>
+            imageShape="round"
+          />
         ))}
       </div>
     </div>
