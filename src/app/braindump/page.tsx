@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'Braindump – Aniket Raj',
     description: 'Essays, thoughts, and reviews by Aniket Raj.',
-    images: ['/metadata/aniket-raj-profile.png'],
+    images: ['/metadata/braindump.png'],
   },
 }
 
