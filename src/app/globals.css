@@ -17,3 +17,21 @@
 body {
   @apply bg-background text-foreground font-body;
 }
+
+/* Custom scrollbar styles for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #525252;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #737373;
+}
