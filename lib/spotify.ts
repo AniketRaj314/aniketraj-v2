@@ -53,21 +53,21 @@ async function spotifyFetch(endpoint: string, params?: Record<string, string>) {
 
 export async function getTopTracks() {
   return spotifyFetch('me/top/tracks', {
-    limit: '10',
+    limit: '20',
     time_range: 'medium_term', // last 6 months
   });
 }
 
 export async function getTopArtists() {
   return spotifyFetch('me/top/artists', {
-    limit: '10',
+    limit: '20',
     time_range: 'medium_term',
   });
 }
 
 export async function getRecentlyPlayed() {
   return spotifyFetch('me/player/recently-played', {
-    limit: '10',
+    limit: '20',
   });
 }
 

@@ -87,7 +87,7 @@ export default function MusicPageClient() {
         onClose={() => setIsRecentlyPlayedModalOpen(false)}
         title="RECENTLY PLAYED TRACKS"
       >
-        <RecentlyPlayed tracksToShow={10} />
+        <RecentlyPlayed tracksToShow={20} />
       </Modal>
 
       {/* Modal for expanded top tracks */}
@@ -96,7 +96,7 @@ export default function MusicPageClient() {
         onClose={() => setIsTopTracksModalOpen(false)}
         title="TOP TRACKS"
       >
-        <TopTracks tracksToShow={10} />
+        <TopTracks tracksToShow={20} />
       </Modal>
 
       {/* Modal for expanded top artists */}
@@ -105,7 +105,7 @@ export default function MusicPageClient() {
         onClose={() => setIsTopArtistsModalOpen(false)}
         title="TOP ARTISTS"
       >
-        <TopArtists artistsToShow={10} />
+        <TopArtists artistsToShow={20} />
       </Modal>
     </>
   )
