@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import PlaylistsGrid from './PlaylistsGrid'
+import MediaItem from './MediaItem'
 import { PINNED_PLAYLIST_IDS } from '../constants/pinnedPlaylists'
 
 export type Playlist = {
@@ -17,10 +18,22 @@ function getPlaylistId(url: string) {
   return match ? match[1] : null
 }
 
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(false)
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 1024)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+  return isDesktop
+}
+
 export default function Playlists() {
   const [playlists, setPlaylists] = useState<Playlist[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const isDesktop = useIsDesktop()
 
   useEffect(() => {
     fetch('/api/spotify/playlists')
@@ -48,5 +61,23 @@ export default function Playlists() {
     return <div className="text-neutral-400">No pinned playlists found.</div>
   }
 
-  return <PlaylistsGrid playlists={pinnedPlaylists} />
+  if (isDesktop) {
+    return <PlaylistsGrid playlists={pinnedPlaylists} />
+  }
+
+  // Mobile: show as a vertical list using MediaItem
+  return (
+    <div className="flex flex-col gap-3">
+      {pinnedPlaylists.map((playlist) => (
+        <MediaItem
+          key={playlist.external_url}
+          image={playlist.images?.[0]?.url || '/metadata/music.png'}
+          title={playlist.name}
+          subtext={`${playlist.tracks_total} tracks`}
+          href={playlist.external_url}
+          imageShape="square"
+        />
+      ))}
+    </div>
+  )
 }

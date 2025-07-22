@@ -84,7 +84,7 @@ export default function MusicPageClient() {
 
         <section>
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-heading">SPOTIFY PLAYLISTS</h2>
+            <h2 className="text-2xl font-heading">TOP PLAYLISTS</h2>
           </div>
           <Playlists />
         </section>
