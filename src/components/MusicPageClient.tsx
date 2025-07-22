@@ -79,11 +79,15 @@ export default function MusicPageClient() {
             <TopArtists artistsToShow={5} />
           </div>
         </section>
-      </div>
 
-      {/* Playlists Section */}
-      <div className="max-w-4xl mx-auto px-6 pb-16">
-        <Playlists />
+        <hr />
+
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-2xl font-heading">SPOTIFY PLAYLISTS</h2>
+          </div>
+          <Playlists />
+        </section>
       </div>
 
       {/* Modal for expanded recently played tracks */}

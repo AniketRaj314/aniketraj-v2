@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import MediaItem from './MediaItem'
 import PlaylistsGrid from './PlaylistsGrid'
+import { PINNED_PLAYLIST_IDS } from '../constants/pinnedPlaylists'
 
 export type Playlist = {
   name: string
@@ -12,70 +12,41 @@ export type Playlist = {
   owner_display_name: string
 }
 
-function useIsDesktop() {
-  const [isDesktop, setIsDesktop] = useState(false)
-  useEffect(() => {
-    const check = () => setIsDesktop(window.innerWidth >= 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
-  return isDesktop
+function getPlaylistId(url: string) {
+  const match = url.match(/playlist\/([a-zA-Z0-9]+)/)
+  return match ? match[1] : null
 }
 
 export default function Playlists() {
   const [playlists, setPlaylists] = useState<Playlist[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const isDesktop = useIsDesktop()
 
   useEffect(() => {
     fetch('/api/spotify/playlists')
       .then((res) => res.json())
       .then((data) => {
-        if (data.error) {
-          setError(data.error)
-        } else {
-          setPlaylists(data.playlists || [])
-        }
+        if (data.error) setError(data.error)
+        else setPlaylists(data.playlists || [])
         setLoading(false)
       })
-      .catch((err) => {
+      .catch(() => {
         setError('Failed to fetch playlists.')
         setLoading(false)
       })
   }, [])
 
-  if (loading) {
-    return <div className="text-neutral-400">Loading playlists...</div>
-  }
-  if (error) {
-    return <div className="text-red-400">{error}</div>
-  }
-  if (!playlists.length) {
-    return <div className="text-neutral-400">No playlists found.</div>
+  if (loading) return <div className="text-neutral-400">Loading playlists...</div>
+  if (error) return <div className="text-red-400">{error}</div>
+
+  // Filter and order playlists by pinned IDs
+  const pinnedPlaylists = PINNED_PLAYLIST_IDS.map((id) =>
+    playlists.find((playlist) => getPlaylistId(playlist.external_url) === id)
+  ).filter(Boolean) as Playlist[]
+
+  if (!pinnedPlaylists.length) {
+    return <div className="text-neutral-400">No pinned playlists found.</div>
   }
 
-  if (isDesktop) {
-    return <PlaylistsGrid playlists={playlists} />
-  }
-
-  // Mobile list view
-  return (
-    <section>
-      <h2 className="text-2xl font-heading mb-6">SPOTIFY PLAYLISTS</h2>
-      <div className="flex flex-col gap-3">
-        {playlists.map((playlist) => (
-          <MediaItem
-            key={playlist.external_url}
-            image={playlist.images?.[0]?.url || '/metadata/music.png'}
-            title={playlist.name}
-            subtext={`by ${playlist.owner_display_name || 'Unknown'} • ${playlist.tracks_total} tracks`}
-            href={playlist.external_url}
-            imageShape="square"
-          />
-        ))}
-      </div>
-    </section>
-  )
+  return <PlaylistsGrid playlists={pinnedPlaylists} />
 }
