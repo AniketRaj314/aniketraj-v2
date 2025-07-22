@@ -7,7 +7,7 @@ import TopTracks from './TopTracks'
 import RecentlyPlayed from './RecentlyPlayed'
 import Modal from './Modal'
 import Navbar from './Navbar'
-import ExpandIcon from './ExpandIcon'
+import Playlists from './Playlists'
 
 export default function MusicPageClient() {
   const [isRecentlyPlayedModalOpen, setIsRecentlyPlayedModalOpen] = useState(false)
@@ -42,7 +42,7 @@ export default function MusicPageClient() {
                 className="text-neutral-400 hover:text-white transition-colors p-2 hover:bg-neutral-800 rounded-md"
                 title="View more tracks"
               >
-                <ExpandIcon title="View more tracks" />
+                <img src="/icons/expand.svg" alt="View more tracks" className="w-5 h-5" />
               </button>
             </div>
             <RecentlyPlayed tracksToShow={5} />
@@ -59,7 +59,7 @@ export default function MusicPageClient() {
                 className="text-neutral-400 hover:text-white transition-colors p-2 hover:bg-neutral-800 rounded-md"
                 title="View more tracks"
               >
-                <ExpandIcon title="View more tracks" />
+                <img src="/icons/expand.svg" alt="View more tracks" className="w-5 h-5" />
               </button>
             </div>
             <TopTracks tracksToShow={5} />
@@ -73,12 +73,17 @@ export default function MusicPageClient() {
                 className="text-neutral-400 hover:text-white transition-colors p-2 hover:bg-neutral-800 rounded-md"
                 title="View more artists"
               >
-                <ExpandIcon title="View more artists" />
+                <img src="/icons/expand.svg" alt="View more artists" className="w-5 h-5" />
               </button>
             </div>
             <TopArtists artistsToShow={5} />
           </div>
         </section>
+      </div>
+
+      {/* Playlists Section */}
+      <div className="max-w-4xl mx-auto px-6 pb-16">
+        <Playlists />
       </div>
 
       {/* Modal for expanded recently played tracks */}

@@ -87,4 +87,36 @@ export async function getCurrentlyPlaying() {
   return res.json();
 }
 
+/**
+ * Fetches the user's playlists from Spotify.
+ * @returns Array of playlists with selected fields.
+ */
+export async function getUserPlaylists() {
+  const accessToken = await getAccessToken();
+  const url = 'https://api.spotify.com/v1/me/playlists?limit=50';
+  const res = await fetch(url, {
+    headers: {
+      'Authorization': `Bearer ${accessToken}`,
+    },
+  });
+  if (!res.ok) {
+    if (res.status === 401) {
+      throw new Error('Invalid or expired Spotify access token.');
+    }
+    if (res.status === 429) {
+      throw new Error('Spotify rate limit exceeded.');
+    }
+    throw new Error(`Spotify API error: ${res.status} ${res.statusText}`);
+  }
+  const data = await res.json();
+  // Map to only required fields
+  return (data.items || []).map((playlist: any) => ({
+    name: playlist.name,
+    images: playlist.images,
+    external_url: playlist.external_urls?.spotify,
+    tracks_total: playlist.tracks?.total,
+    owner_display_name: playlist.owner?.display_name,
+  }));
+}
+
 export { getAccessToken }; 
