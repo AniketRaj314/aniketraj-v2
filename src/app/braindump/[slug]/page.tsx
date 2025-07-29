@@ -41,14 +41,25 @@ export default async function PostPage({ params }: Props) {
         <Link href="/braindump" className="text-sm text-neutral-500 hover:underline">
           ← back to all posts
         </Link>
-        <h1 className="font-heading text-3xl md:text-5xl">{post.title.toUpperCase()}</h1>
-        <p className="text-sm text-neutral-400">
-          {new Date(post.date).toLocaleDateString('en-GB', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-          })}
-        </p>
+        <div className="space-y-4">
+          <h1 className="font-heading text-3xl md:text-5xl">{post.title.toUpperCase()}</h1>
+          {post.description && (
+            <p className="text-lg text-neutral-300 leading-relaxed max-w-2xl">{post.description}</p>
+          )}
+          <p className="text-sm text-neutral-400">
+            {new Date(post.date).toLocaleDateString('en-GB', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric',
+            })}
+            {post.readTime && (
+              <>
+                <span className="mx-2">•</span>
+                {post.readTime}
+              </>
+            )}
+          </p>
+        </div>
         {post.image && (
           <div className="my-6 flex justify-center">
             <Image

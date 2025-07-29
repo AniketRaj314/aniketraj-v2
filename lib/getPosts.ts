@@ -10,6 +10,7 @@ export interface Post {
   date: string;
   slug: string;
   image?: string;
+  readTime?: string;
   content: string;
 }
 
@@ -28,6 +29,7 @@ export function getAllPosts(): Post[] {
         date: data.date,
         slug: data.slug || slug,
         image: data.image || undefined,
+        readTime: data.readTime || undefined,
         content,
       };
     })
@@ -46,6 +48,7 @@ export function getPostBySlug(slug: string): Post | null {
     date: data.date,
     slug: data.slug || slug,
     image: data.image || undefined,
+    readTime: data.readTime || undefined,
     content,
   };
 } 
