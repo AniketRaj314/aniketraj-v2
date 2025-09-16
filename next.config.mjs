@@ -16,6 +16,11 @@ const nextConfig = {
         destination: 'https://maps.app.goo.gl/6LCukt6DkcTpV6Ec7',
         permanent: true,
       },
+      {
+        source: '/dad-blr-house',
+        destination: 'https://maps.app.goo.gl/GDfnXc5fm5nAvFq89',
+        permanent: true,
+      },
     ]
   },
 }
