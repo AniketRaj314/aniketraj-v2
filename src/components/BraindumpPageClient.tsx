@@ -19,10 +19,10 @@ export default function BraindumpPageClient({ posts }: { posts: Post[] }) {
       <Navbar />
       <div className="max-w-6xl mx-auto px-6 py-10 pt-32">
         <h1 className="font-heading text-3xl md:text-5xl">BRAINDUMP</h1>
-        <p className="mt-4 text-neutral-300 max-w-2xl leading-relaxed">
-          Essays, thoughts, and reviews I write for fun and clarity. A small
-          collection of things I want to remember, and a few I might want to
-          revisit.
+        <p className="mt-4 text-neutral-400 max-w-4xl leading-relaxed">
+        Started as a random thought dump, now it&apos;s basically my personality in blog form. 
+        <br />
+        If you wanna know what I&apos;m like or what goes on in my head, this page does a better job than I ever could.
         </p>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
