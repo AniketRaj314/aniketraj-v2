@@ -8,7 +8,7 @@ const nextConfig = {
     return [
       {
         source: '/blr-house',
-        destination: 'https://maps.app.goo.gl/PMVnqYE9hnPa6ygc9',
+        destination: 'https://maps.app.goo.gl/cnUDS9hMcknb49wE7',
         permanent: true,
       },
       {
