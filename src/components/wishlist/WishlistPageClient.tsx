@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import Navbar from '@/components/Navbar'
 import WishlistCard from '@/components/wishlist/WishlistCard'
+import { ImageSkeleton } from '@/components/ImageLoader'
 import { getWishlist, filterByCategory, filterByStatus, sortItems } from '@/lib/wishlist'
 import { WishlistItem } from '@/types/wishlist'
 
@@ -26,6 +27,7 @@ function WishlistContent() {
   const [sort, setSort] = useState('Most Wanted')
   const [selectedItem, setSelectedItem] = useState<WishlistItem | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isInitialLoading, setIsInitialLoading] = useState(true)
 
   const wishlist = useMemo(() => getWishlist(), [])
 
@@ -45,6 +47,10 @@ function WishlistContent() {
         setIsModalOpen(true)
       }
     }
+    
+    // Simulate initial loading
+    const timer = setTimeout(() => setIsInitialLoading(false), 500)
+    return () => clearTimeout(timer)
   }, [searchParams, wishlist])
 
   // Debounced search
@@ -232,23 +238,56 @@ function WishlistContent() {
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
         >
           <AnimatePresence mode="popLayout">
-            {filteredItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ 
-                  duration: 0.4, 
-                  delay: index * 0.05,
-                  ease: "easeOut",
-                  layout: { duration: 0.3, ease: "easeInOut" }
-                }}
-              >
-                <WishlistCard item={item} onOpen={handleItemOpen} />
-              </motion.div>
-            ))}
+            {isInitialLoading ? (
+              // Loading skeletons
+              Array.from({ length: 8 }).map((_, index) => (
+                <motion.div
+                  key={`skeleton-${index}`}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ 
+                    duration: 0.4, 
+                    delay: index * 0.05,
+                    ease: "easeOut"
+                  }}
+                >
+                  <div className="group flex flex-col h-full bg-neutral-900 border border-neutral-800 rounded-2xl overflow-hidden">
+                    <ImageSkeleton className="w-full aspect-[16/9]" />
+                    <div className="flex flex-col flex-1 p-5 space-y-3">
+                      <div className="h-4 bg-neutral-800 rounded animate-pulse"></div>
+                      <div className="h-6 bg-neutral-800 rounded animate-pulse"></div>
+                      <div className="space-y-2 flex-1">
+                        <div className="h-3 bg-neutral-800 rounded animate-pulse"></div>
+                        <div className="h-3 bg-neutral-800 rounded animate-pulse w-3/4"></div>
+                      </div>
+                      <div className="h-4 bg-neutral-800 rounded animate-pulse w-1/2"></div>
+                    </div>
+                    <div className="flex items-center justify-between p-5 pt-0">
+                      <div className="h-6 bg-neutral-800 rounded-full animate-pulse w-16"></div>
+                      <div className="h-4 bg-neutral-800 rounded animate-pulse w-12"></div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))
+            ) : (
+              filteredItems.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ 
+                    duration: 0.4, 
+                    delay: index * 0.05,
+                    ease: "easeOut",
+                    layout: { duration: 0.3, ease: "easeInOut" }
+                  }}
+                >
+                  <WishlistCard item={item} onOpen={handleItemOpen} />
+                </motion.div>
+              ))
+            )}
           </AnimatePresence>
         </motion.div>
 

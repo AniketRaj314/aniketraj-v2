@@ -2,9 +2,8 @@
 
 import Link from 'next/link'
 import Navbar from './Navbar'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { getOptimalQuality, getOptimalSizes, BLUR_DATA_URLS } from '@/lib/imageUtils'
+import ImageLoader from './ImageLoader'
 
 interface Post {
   slug: string
@@ -65,17 +64,14 @@ export default function BraindumpPageClient({ posts }: { posts: Post[] }) {
               <Link href={`/braindump/${post.slug}`} className="group block">
                 <div className="border border-neutral-700 rounded-2xl overflow-hidden hover:border-neutral-500 transition-colors">
                   {post.image && (
-                    <div className="relative w-full aspect-[16/9] overflow-hidden bg-neutral-800">
-                      <Image
+                    <div className="relative w-full aspect-[16/9] overflow-hidden">
+                      <ImageLoader
                         src={post.image}
                         alt={post.title}
                         fill
-                        sizes={getOptimalSizes('grid')}
-                        className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                        context="grid"
                         loading="lazy"
-                        quality={getOptimalQuality('grid')}
-                        placeholder="blur"
-                        blurDataURL={BLUR_DATA_URLS.dark}
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
                   )}

@@ -1,10 +1,9 @@
 'use client'
 
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { WishlistItem } from '@/types/wishlist'
 import CategoryPill from './CategoryPill'
-import { getOptimalQuality, getOptimalSizes, BLUR_DATA_URLS } from '@/lib/imageUtils'
+import ImageLoader from '../ImageLoader'
 
 interface WishlistModalProps {
   open: boolean
@@ -108,17 +107,14 @@ export default function WishlistModal({ open, item, onClose }: WishlistModalProp
           <div className="flex gap-6">
             {/* Left Side - Image */}
             <div className="flex-shrink-0 w-1/2">
-              <div className="relative w-full aspect-square rounded-lg overflow-hidden bg-neutral-800">
-                <Image
+              <div className="relative w-full aspect-square rounded-lg overflow-hidden">
+                <ImageLoader
                   src={item.modalImage}
                   alt={item.title}
                   fill
-                  sizes={getOptimalSizes('modal')}
-                  className="object-cover"
+                  context="modal"
                   priority
-                  quality={getOptimalQuality('modal')}
-                  placeholder="blur"
-                  blurDataURL={BLUR_DATA_URLS.dark}
+                  className="object-cover"
                 />
               </div>
             </div>

@@ -1,9 +1,8 @@
 'use client'
 
-import Image from 'next/image'
 import { WishlistItem } from '@/types/wishlist'
 import CategoryPill from './CategoryPill'
-import { getOptimalQuality, getOptimalSizes, BLUR_DATA_URLS } from '@/lib/imageUtils'
+import ImageLoader from '../ImageLoader'
 
 interface WishlistCardProps {
   item: WishlistItem
@@ -60,17 +59,14 @@ export default function WishlistCard({ item, onOpen }: WishlistCardProps) {
       aria-label={`View details for ${item.title}`}
     >
       {/* Image */}
-      <div className="relative w-full aspect-[16/9] overflow-hidden bg-neutral-800">
-        <Image
+      <div className="relative w-full aspect-[16/9] overflow-hidden">
+        <ImageLoader
           src={item.listImage}
           alt={item.title}
           fill
-          sizes={getOptimalSizes('grid')}
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          context="grid"
           loading="lazy"
-          quality={getOptimalQuality('grid')}
-          placeholder="blur"
-          blurDataURL={BLUR_DATA_URLS.dark}
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
 
