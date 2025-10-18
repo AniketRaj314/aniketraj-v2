@@ -16,7 +16,7 @@ export default function CategoryPill({ category, size = 'sm' }: CategoryPillProp
         return 'text-purple-400 border border-purple-400/30 rounded-md bg-purple-400/10'
       case 'Collectibles':
         return 'text-yellow-400 border border-yellow-400/30 rounded-md bg-yellow-400/10'
-      case 'Experiences':
+      case 'Utilities':
         return 'text-pink-400 border border-pink-400/30 rounded-md bg-pink-400/10'
       case 'Home Decor':
         return 'text-orange-400 border border-orange-400/30 rounded-md bg-orange-400/10'

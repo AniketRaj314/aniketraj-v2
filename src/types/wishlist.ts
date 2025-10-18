@@ -10,7 +10,7 @@ export const WishlistItemSchema = z.object({
     "Books",
     "Design",
     "Collectibles",
-    "Experiences",
+    "Utilities",
     "Home Decor"
   ]),
   notes: z.string(),

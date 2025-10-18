@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
 import { WishlistItem } from '@/types/wishlist'
 import CategoryPill from './CategoryPill'
 
@@ -46,21 +47,37 @@ export default function WishlistModal({ open, item, onClose }: WishlistModalProp
   }
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modal-title"
-    >
-      {/* Backdrop */}
-      <div 
-        className="absolute inset-0 bg-black/80 backdrop-blur-sm" 
-        onClick={onClose}
-        aria-hidden="true"
-      />
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          {/* Backdrop */}
+          <motion.div 
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm" 
+            onClick={onClose}
+            aria-hidden="true"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          />
 
-      {/* Modal */}
-      <div className="relative bg-neutral-900 border border-neutral-800 rounded-2xl shadow-2xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-hidden">
+          {/* Modal */}
+          <motion.div 
+            className="relative bg-neutral-900 border border-neutral-800 rounded-2xl shadow-2xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-hidden"
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          >
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-neutral-800">
           <div className="flex items-center space-x-3">
@@ -144,7 +161,9 @@ export default function WishlistModal({ open, item, onClose }: WishlistModalProp
             </div>
           </div>
         </div>
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }

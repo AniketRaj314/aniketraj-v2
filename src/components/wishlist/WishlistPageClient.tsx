@@ -12,7 +12,7 @@ import { WishlistItem } from '@/types/wishlist'
 // Dynamic import for modal to prevent SSR issues
 const WishlistModal = dynamic(() => import('@/components/wishlist/WishlistModal'), { ssr: false })
 
-const categories = ["All", "Tech", "Books", "Design", "Collectibles", "Experiences", "Home Decor"]
+const categories = ["All", "Tech", "Books", "Design", "Collectibles", "Utilities", "Home Decor"]
 const statuses = ["All", "Dreaming", "Gifted", "Owned"]
 const sortOptions = ["Recently Added", "Most Wanted", "Price Low → High", "Price High → Low"]
 
@@ -27,7 +27,7 @@ function WishlistContent() {
   const [selectedItem, setSelectedItem] = useState<WishlistItem | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const wishlist = getWishlist()
+  const wishlist = useMemo(() => getWishlist(), [])
 
   // Initialize state from search params after mount
   useEffect(() => {
@@ -35,7 +35,17 @@ function WishlistContent() {
     setCategory(searchParams.get('category') || 'All')
     setStatus(searchParams.get('status') || 'All')
     setSort(searchParams.get('sort') || 'Recently Added')
-  }, [searchParams])
+    
+    // Handle modal item from URL
+    const itemId = searchParams.get('item')
+    if (itemId) {
+      const item = wishlist.find(i => i.id === itemId)
+      if (item) {
+        setSelectedItem(item)
+        setIsModalOpen(true)
+      }
+    }
+  }, [searchParams, wishlist])
 
   // Debounced search
   const [debouncedSearch, setDebouncedSearch] = useState(search)
@@ -84,11 +94,22 @@ function WishlistContent() {
   const handleItemOpen = (item: WishlistItem) => {
     setSelectedItem(item)
     setIsModalOpen(true)
+    
+    // Update URL with item parameter
+    const params = new URLSearchParams(searchParams.toString())
+    params.set('item', item.id)
+    router.replace(`?${params.toString()}`, { scroll: false })
   }
 
   const handleModalClose = () => {
     setIsModalOpen(false)
     setSelectedItem(null)
+    
+    // Remove item parameter from URL
+    const params = new URLSearchParams(searchParams.toString())
+    params.delete('item')
+    const newUrl = params.toString() ? `?${params.toString()}` : '/wishlist'
+    router.replace(newUrl, { scroll: false })
   }
 
   const handleCategoryChange = (newCategory: string) => {
