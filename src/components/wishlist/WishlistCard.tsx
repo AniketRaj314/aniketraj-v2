@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { WishlistItem } from '@/types/wishlist'
 import CategoryPill from './CategoryPill'
+import { getOptimalQuality, getOptimalSizes, BLUR_DATA_URLS } from '@/lib/imageUtils'
 
 interface WishlistCardProps {
   item: WishlistItem
@@ -64,12 +65,12 @@ export default function WishlistCard({ item, onOpen }: WishlistCardProps) {
           src={item.listImage}
           alt={item.title}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+          sizes={getOptimalSizes('grid')}
           className="object-cover group-hover:scale-105 transition-transform duration-300"
           loading="lazy"
-          quality={75}
+          quality={getOptimalQuality('grid')}
           placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+          blurDataURL={BLUR_DATA_URLS.dark}
         />
       </div>
 

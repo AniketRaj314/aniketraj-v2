@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from './Navbar'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { getOptimalQuality, getOptimalSizes, BLUR_DATA_URLS } from '@/lib/imageUtils'
 
 interface Post {
   slug: string
@@ -69,12 +70,12 @@ export default function BraindumpPageClient({ posts }: { posts: Post[] }) {
                         src={post.image}
                         alt={post.title}
                         fill
-                        sizes="(max-width: 1024px) 100vw, 33vw"
+                        sizes={getOptimalSizes('grid')}
                         className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
-                        quality={75}
+                        quality={getOptimalQuality('grid')}
                         placeholder="blur"
-                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                        blurDataURL={BLUR_DATA_URLS.dark}
                       />
                     </div>
                   )}

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { WishlistItem } from '@/types/wishlist'
 import CategoryPill from './CategoryPill'
+import { getOptimalQuality, getOptimalSizes, BLUR_DATA_URLS } from '@/lib/imageUtils'
 
 interface WishlistModalProps {
   open: boolean
@@ -112,12 +113,12 @@ export default function WishlistModal({ open, item, onClose }: WishlistModalProp
                   src={item.modalImage}
                   alt={item.title}
                   fill
-                  sizes="(max-width: 1024px) 50vw, 40vw"
+                  sizes={getOptimalSizes('modal')}
                   className="object-cover"
                   priority
-                  quality={85}
+                  quality={getOptimalQuality('modal')}
                   placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                  blurDataURL={BLUR_DATA_URLS.dark}
                 />
               </div>
             </div>
