@@ -26,7 +26,6 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
-    "@squoosh/cli": "^0.7.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
