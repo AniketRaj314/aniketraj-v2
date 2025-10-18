@@ -16,12 +16,14 @@
     "@next/mdx": "^15.3.5",
     "@tailwindcss/typography": "^0.5.16",
     "date-fns": "^4.1.0",
+    "framer-motion": "^12.23.24",
     "gray-matter": "^4.0.3",
     "next": "^15.3.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "remark-gfm": "^4.0.1",
-    "tailwind-scrollbar": "^3.0.5"
+    "tailwind-scrollbar": "^3.0.5",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@types/node": "^20",

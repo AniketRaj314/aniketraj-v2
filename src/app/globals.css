@@ -16,6 +16,7 @@
 
 body {
   @apply bg-background text-foreground font-body;
+  scrollbar-gutter: stable both-edges;
 }
 
 /* Custom scrollbar styles for webkit browsers */

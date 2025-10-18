@@ -21,6 +21,9 @@ export default function Navbar({ logoText = 'SPODER', logoHref = '/' }: NavbarPr
         <a href="/music" className="hover:text-accent transition-colors">
           Music
         </a>
+        <a href="/wishlist" className="hover:text-accent transition-colors">
+          Wishlist
+        </a>
       </nav>
     </header>
   )
