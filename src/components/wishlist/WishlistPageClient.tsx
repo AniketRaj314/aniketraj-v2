@@ -177,7 +177,7 @@ function WishlistContent() {
           <div className="flex flex-col sm:flex-row gap-4">
             {/* Categories */}
             <div className="flex-1">
-              <div className="flex overflow-x-auto space-x-2 pb-2">
+              <div className="flex overflow-x-auto space-x-2 pb-2 scrollbar-hide">
                 {categories.map((cat) => (
                   <button
                     key={cat}
