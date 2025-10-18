@@ -1,9 +1,9 @@
 'use client'
 
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { WishlistItem } from '@/types/wishlist'
 import CategoryPill from './CategoryPill'
-import ImageLoader from '../ImageLoader'
 
 interface WishlistModalProps {
   open: boolean
@@ -107,14 +107,13 @@ export default function WishlistModal({ open, item, onClose }: WishlistModalProp
           <div className="flex gap-6">
             {/* Left Side - Image */}
             <div className="flex-shrink-0 w-1/2">
-              <div className="relative w-full aspect-square rounded-lg overflow-hidden">
-                <ImageLoader
+              <div className="relative w-full aspect-square rounded-lg overflow-hidden bg-neutral-800">
+                <Image
                   src={item.modalImage}
                   alt={item.title}
                   fill
-                  context="modal"
-                  priority
                   className="object-cover"
+                  priority
                 />
               </div>
             </div>

@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 import Navbar from './Navbar'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
-import ImageLoader from './ImageLoader'
 
 interface Post {
   slug: string
@@ -64,14 +64,13 @@ export default function BraindumpPageClient({ posts }: { posts: Post[] }) {
               <Link href={`/braindump/${post.slug}`} className="group block">
                 <div className="border border-neutral-700 rounded-2xl overflow-hidden hover:border-neutral-500 transition-colors">
                   {post.image && (
-                    <div className="relative w-full aspect-[16/9] overflow-hidden">
-                      <ImageLoader
+                    <div className="relative w-full aspect-[16/9] overflow-hidden bg-neutral-800">
+                      <Image
                         src={post.image}
                         alt={post.title}
                         fill
-                        context="grid"
-                        loading="lazy"
                         className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
                       />
                     </div>
                   )}

@@ -1,8 +1,8 @@
 'use client'
 
+import Image from 'next/image'
 import { WishlistItem } from '@/types/wishlist'
 import CategoryPill from './CategoryPill'
-import ImageLoader from '../ImageLoader'
 
 interface WishlistCardProps {
   item: WishlistItem
@@ -59,14 +59,13 @@ export default function WishlistCard({ item, onOpen }: WishlistCardProps) {
       aria-label={`View details for ${item.title}`}
     >
       {/* Image */}
-      <div className="relative w-full aspect-[16/9] overflow-hidden">
-        <ImageLoader
+      <div className="relative w-full aspect-[16/9] overflow-hidden bg-neutral-800">
+        <Image
           src={item.listImage}
           alt={item.title}
           fill
-          context="grid"
-          loading="lazy"
           className="object-cover group-hover:scale-105 transition-transform duration-300"
+          loading="lazy"
         />
       </div>
 
