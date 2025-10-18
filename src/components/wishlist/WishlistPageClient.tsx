@@ -23,7 +23,7 @@ function WishlistContent() {
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState('All')
   const [status, setStatus] = useState('All')
-  const [sort, setSort] = useState('Recently Added')
+  const [sort, setSort] = useState('Most Wanted')
   const [selectedItem, setSelectedItem] = useState<WishlistItem | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -34,7 +34,7 @@ function WishlistContent() {
     setSearch(searchParams.get('search') || '')
     setCategory(searchParams.get('category') || 'All')
     setStatus(searchParams.get('status') || 'All')
-    setSort(searchParams.get('sort') || 'Recently Added')
+    setSort(searchParams.get('sort') || 'Most Wanted')
     
     // Handle modal item from URL
     const itemId = searchParams.get('item')
@@ -85,7 +85,7 @@ function WishlistContent() {
     if (search) params.set('search', search)
     if (category !== 'All') params.set('category', category)
     if (status !== 'All') params.set('status', status)
-    if (sort !== 'Recently Added') params.set('sort', sort)
+    if (sort !== 'Most Wanted') params.set('sort', sort)
     
     const newUrl = params.toString() ? `?${params.toString()}` : '/wishlist'
     router.replace(newUrl, { scroll: false })

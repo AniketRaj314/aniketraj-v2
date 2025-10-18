@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import NowPlayingCard from './NowPlayingCard'
 import TopArtists from './TopArtists'
 import TopTracks from './TopTracks'
@@ -18,18 +19,45 @@ export default function MusicPageClient() {
     <>
       <Navbar />
       <div className="max-w-4xl mx-auto px-6 py-10 space-y-12 mt-20">
-        <h1 className="font-heading text-3xl md:text-5xl mb-8">MUSIC</h1>
-        <p className="text-neutral-400">
-          If you're gonna ask me about my music taste, might as well see the receipts. <br />
-          This page pulls live data from my Spotify; what I'm playing now, what I just heard, and
-          who's on repeat.
-          <br />
-          <br />
-          No lies, no curated playlists. Just raw, unfiltered vibes.
-        </p>
-        <hr />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-heading text-3xl md:text-5xl mb-8"
+          >
+            MUSIC
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-neutral-400"
+          >
+            If you're gonna ask me about my music taste, might as well see the receipts. <br />
+            This page pulls live data from my Spotify; what I'm playing now, what I just heard, and
+            who's on repeat.
+            <br />
+            <br />
+            No lies, no curated playlists. Just raw, unfiltered vibes.
+          </motion.p>
+        </motion.div>
+        <motion.hr
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        />
         {/* Now Playing and Last 5 Tracks */}
-        <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <motion.section
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <div className="lg:col-span-1">
             <h2 className="text-2xl font-heading mb-4">NOW PLAYING</h2>
             <NowPlayingCard />
@@ -47,10 +75,19 @@ export default function MusicPageClient() {
             </div>
             <RecentlyPlayed tracksToShow={5} />
           </div>
-        </section>
-        <hr />
+        </motion.section>
+        <motion.hr
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        />
         {/* Top Tracks and Top Artists Side by Side */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <motion.section
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl font-heading">TOP TRACKS</h2>
@@ -78,16 +115,24 @@ export default function MusicPageClient() {
             </div>
             <TopArtists artistsToShow={5} />
           </div>
-        </section>
+        </motion.section>
 
-        <hr />
+        <motion.hr
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+        />
 
-        <section>
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-2xl font-heading">TOP PLAYLISTS</h2>
           </div>
           <Playlists />
-        </section>
+        </motion.section>
       </div>
 
       {/* Modal for expanded recently played tracks */}

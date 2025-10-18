@@ -1,5 +1,8 @@
+'use client'
+
 import Image from 'next/image'
 import Navbar from '../components/Navbar'
+import { motion } from 'framer-motion'
 
 export default function Home() {
   return (
@@ -7,18 +10,56 @@ export default function Home() {
       <Navbar />
 
       <main className="min-h-screen flex flex-col items-center justify-center px-4 text-center pt-40 pb-24">
-        <Image
-          src="/aniket-raj-profile.png"
-          alt="Aniket Raj"
-          width={180}
-          height={180}
-          className="rounded-full mb-4 border border-muted"
-        />
-        <h1 className="text-4xl font-heading">ANIKET RAJ</h1>
-        <p className="text-lg font-body text-muted">Chief of Staff, Devfolio</p>
-        <section id="about" className="mt-20 max-w-2xl mx-auto px-4 scroll-mt-24">
-          <h2 className="text-2xl font-heading mb-4 tracking-widest text-center">ABOUT ME</h2>
-          <p className="text-muted font-body leading-relaxed text-left">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Image
+            src="/aniket-raj-profile.png"
+            alt="Aniket Raj"
+            width={180}
+            height={180}
+            className="rounded-full mb-4 border border-muted"
+          />
+        </motion.div>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-4xl font-heading"
+        >
+          ANIKET RAJ
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-lg font-body text-muted"
+        >
+          Chief of Staff, Devfolio
+        </motion.p>
+        <motion.section
+          id="about"
+          className="mt-20 max-w-2xl mx-auto px-4 scroll-mt-24"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-2xl font-heading mb-4 tracking-widest text-center"
+          >
+            ABOUT ME
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="text-muted font-body leading-relaxed text-left"
+          >
             Chief of Staff at{' '}
             <a
               href="https://devfolio.co"
@@ -35,17 +76,32 @@ export default function Home() {
             <br />
             Friendly, nerdy, and usually in over my head — basically Spider-Man, just without the
             radioactive origin story.
-          </p>
-        </section>
+          </motion.p>
+        </motion.section>
       </main>
 
       {/* Experience section further down */}
-      <section
+      <motion.section
         id="experience"
         className="mt-32 max-w-5xl mx-auto px-4 border-t border-muted pt-12 scroll-mt-24"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
       >
-        <h2 className="text-2xl font-heading mb-10 tracking-widest text-center">EXPERIENCE</h2>
-        <div className="space-y-10 font-body text-muted text-sm sm:text-base">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="text-2xl font-heading mb-10 tracking-widest text-center"
+        >
+          EXPERIENCE
+        </motion.h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="space-y-10 font-body text-muted text-sm sm:text-base"
+        >
           <div>
             <div className="grid grid-cols-3 text-foreground font-heading">
               <span className="text-left">Devfolio</span>
@@ -78,15 +134,30 @@ export default function Home() {
             </div>
             <p className="mt-1 text-left">Created NPA risk prediction software</p>
           </div>
-        </div>
-      </section>
-      <section
+        </motion.div>
+      </motion.section>
+      <motion.section
         id="beyond-work"
         className="mt-24 max-w-5xl mx-auto px-4 border-t border-muted pt-12 scroll-mt-24"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.9 }}
       >
-        <h2 className="text-2xl font-heading mb-10 tracking-widest text-center">BEYOND WORK</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
+          className="text-2xl font-heading mb-10 tracking-widest text-center"
+        >
+          BEYOND WORK
+        </motion.h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 sm:gap-x-10 gap-y-10 text-muted text-sm sm:text-base">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.1 }}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 sm:gap-x-10 gap-y-10 text-muted text-sm sm:text-base"
+        >
           {/* Gaming */}
           <div className="flex flex-col items-center space-y-2">
             <Image src="/icons/joystick.svg" alt="Gaming" width={64} height={64} />
@@ -110,16 +181,31 @@ export default function Home() {
             <Image src="/icons/trophy.svg" alt="eSports" width={64} height={64} />
             <span className="font-body">eSports</span>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
-      <section
+      <motion.section
         id="projects"
         className="mt-24 max-w-5xl mx-auto px-4 border-t border-muted pt-12 scroll-mt-24"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 1.2 }}
       >
-        <h2 className="text-2xl font-heading mb-10 tracking-widest text-center">PROJECTS</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.3 }}
+          className="text-2xl font-heading mb-10 tracking-widest text-center"
+        >
+          PROJECTS
+        </motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 justify-center gap-x-16 gap-y-10 font-body text-muted text-sm sm:text-base">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.4 }}
+          className="grid grid-cols-1 sm:grid-cols-2 justify-center gap-x-16 gap-y-10 font-body text-muted text-sm sm:text-base"
+        >
           {/* SCRIPT Group */}
           <div className="w-full max-w-md flex flex-col gap-2">
             <div className="flex flex-col gap-2">
@@ -177,16 +263,31 @@ export default function Home() {
               </a>
             </div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
-      <section
+      <motion.section
         id="socials"
         className="mt-24 max-w-5xl mx-auto px-4 border-t border-muted pt-12 scroll-mt-24"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 1.5 }}
       >
-        <h2 className="text-2xl font-heading mb-10 tracking-widest text-center">SOCIALS</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.6 }}
+          className="text-2xl font-heading mb-10 tracking-widest text-center"
+        >
+          SOCIALS
+        </motion.h2>
 
-        <div className="flex flex-wrap justify-center gap-12 text-muted text-sm sm:text-base">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.7 }}
+          className="flex flex-wrap justify-center gap-12 text-muted text-sm sm:text-base"
+        >
           {/* Telegram */}
           <a
             href="https://t.me/AniketRaj314"
@@ -270,8 +371,8 @@ export default function Home() {
           >
             <Image src="/icons/email.svg" alt="Email" width={30} height={30} />
           </a>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
     </>
   )
 }

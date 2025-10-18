@@ -107,7 +107,7 @@ export default function WishlistModal({ open, item, onClose }: WishlistModalProp
           <div className="flex gap-6">
             {/* Left Side - Image */}
             <div className="flex-shrink-0 w-1/2">
-              <div className="relative w-full aspect-square rounded-lg overflow-hidden">
+              <div className="relative w-full aspect-square rounded-lg overflow-hidden bg-neutral-800">
                 <Image
                   src={item.modalImage}
                   alt={item.title}
@@ -115,6 +115,9 @@ export default function WishlistModal({ open, item, onClose }: WishlistModalProp
                   sizes="(max-width: 1024px) 50vw, 40vw"
                   className="object-cover"
                   priority
+                  quality={85}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                 />
               </div>
             </div>
